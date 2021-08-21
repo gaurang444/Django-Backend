@@ -10,13 +10,14 @@ from datetime import datetime
 from .models import *
 from rest_framework.decorators import api_view
 import csv
-
+from .filters import *
 #api view to get all users and table view
 def home_view(request):
     all_users=User.objects.all()
-    print(all_users.count())
+    user_filter = UserFilter(request.GET, queryset=all_users)
     res={}
-    res['data']=all_users
+    res['data']=user_filter
+    res['filter']=user_filter
     return render(request,"index.html",res)
 
 #end point for creating new user. check if user already exists on adhar_num search key

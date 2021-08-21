@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crud'
+    'crud',
+    'crispy_forms',
+    'django_filters',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
