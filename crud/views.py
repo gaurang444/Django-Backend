@@ -8,7 +8,6 @@ from django.utils import timezone
 from django.http import HttpResponse, HttpResponseRedirect
 from datetime import datetime
 from .models import *
-from rest_framework.decorators import api_view
 import csv
 from .filters import *
 #api view to get all users and table view
