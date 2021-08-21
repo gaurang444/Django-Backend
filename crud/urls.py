@@ -9,5 +9,6 @@ user_urlpatterns = [
     url(r'^add/$',views.add_user, name='user-create'),
     url(r'^update/$',views.update_user, name='user-update'),
     url(r'^delete/$',views.delete_user, name='user-delete'),
+    url(r'^download-mis/$',views.download_csv, name='user-delete'),
     
 ]

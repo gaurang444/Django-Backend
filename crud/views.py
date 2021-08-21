@@ -9,6 +9,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from datetime import datetime
 from .models import *
 from rest_framework.decorators import api_view
+import csv
 
 #api view to get all users and table view
 def home_view(request):
@@ -87,9 +88,17 @@ def delete_user(request):
 def send_email():
     return
 
-def download_csv():
+def download_csv(request):
+    db_all=User.objects.all()
+    response = HttpResponse(content_type='text/csv')
+    filename = u"KAFQA_DATA_EXPORT " + " " + str(timezone.now()) + ".csv"
+    response['Content-Disposition'] = u'attachment; filename="{0}"'.format(filename)
+    writer = csv.writer(response)
+    writer.writerow(['Username','Adhar_number','Phone_number','Email','Address','Is_Active()','user_created_at','last_updated_at'])
+    for obj in db_all:
+        writer.writerow([obj.user_name,obj.adhar_num,obj.phone_num, obj.email, obj.address, obj.is_Active,obj.user_created_at,obj.last_updatedat])
+    return response
     
-    return
 
      
 
